@@ -1,0 +1,18 @@
+.card-body {
+    background-color: teal;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-text {
+    text-align: center;
+}
+
+.btn {
+}
+
+body{
+    background-image: url("../images/background.jpg") no-repeat cen
+}
