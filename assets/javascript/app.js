@@ -3,7 +3,7 @@ var trivia = {
     wrong: 0,//wrong starts at 0
     unanswered: 0,//unanswered starts at 0
     currentset: 1,
-    timeleft: 5,//setting the time to 30 MAKE SURE TO CHANGE BACK TO 30
+    timeleft: 2,//setting the time to 30 MAKE SURE TO CHANGE BACK TO 30
     transitiontime: 5,//5 seconds transition between seeing answer to next question
     timerrun: false,//timer not running until the game starts
     intervalID: "",//variable that will hold our interval ID when time executes
@@ -44,8 +44,8 @@ var trivia = {
 $(document).ready(function() {//on document start
     $("#startgame").on("click",gameStart) //click button to start
 
-   $("#optionsdiv").on("click",".option",checkAnswer)
-    
+    $("#optionsdiv").on("click",".option",checkAnswer)
+
 
 
 
@@ -69,6 +69,7 @@ $(document).ready(function() {//on document start
         $("#timersection").show();//shows the timer
         starttimer();
         nextQ();
+        
     };
     function nextQ() {
         var questionContent = Object.values(trivia.questions)[trivia.currentset];//takes the questions then indexes the current question
@@ -96,12 +97,12 @@ $(document).ready(function() {//on document start
             console.log("out of time");//CONFIRMED FUNCTIONAL
             trivia.unanswered++;//CONFIRMED FUNCTIONAL
             console.log("unanswered:" + trivia.unanswered);//CONFIRMED FUNCTIONAL
-            $("#question").hide();//hides the question
-            $("#resultdiv").html('<h3>Out of Time! The correct answer was ' + trivia.answers[expectedanswer],'</h3>');//says player is ran out of time
+            $("#question").hide();//hides the question//CONFIRMED FUNCTIONAL
+            $("#resultdiv").html('<h3>Out of Time! The correct answer was ' + trivia.answers[expectedanswer],'</h3>');//says player is ran out of time CONFIRMED FUNCTIONAL
             $("#optionsdiv").hide();//hides the buttons for the choices
-            stop();
+            stop();//CONFIRMED FUNCTIONAL
             $("#imagediv").html("<img src='./assets/images/Hercimg.jpg' alt='image'/>");//shows the image associted with the correct answer
-            nextQ();
+            nextQ();//UNCONFIRMED
             // transition();//restarts the timer to 5 seconds
             // traninterval();
                 //shows the next question
@@ -131,8 +132,8 @@ $(document).ready(function() {//on document start
             $("#optionsdiv").hide();//hides the buttons for the choices
             stop();//stops the timer
             $("#imagediv").html("<img src='./assets/images/Hercimg.jpg' alt='image'/>");//shows the image associted with the correct answer
-            transition();//restarts the timer to 5 seconds
-            traninterval();
+            // transition();//restarts the timer to 5 seconds
+            // traninterval();
         }
 
         
@@ -142,7 +143,15 @@ $(document).ready(function() {//on document start
 
     }
 
-
+    function reset() {
+        $("#startgame").html('<h3>Play Again!</h3>');
+        $("#startgame").on("click",function() {
+        trivia.correct=0;
+        trivia.wrong=0;
+        trivia.unanswered=0;
+        })
+        gameStart();
+    }
     
 
 

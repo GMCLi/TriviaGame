@@ -10,9 +10,33 @@
     text-align: center;
 }
 
-.btn {
+body{
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: 0.9;
 }
 
-body{
-    background-image: url("../images/background.jpg") no-repeat cen
+#gamediv{
+    text-align: center;
+}
+
+#optionsdiv{
+    align-content: center;
+    text-align: center;
+}
+
+#startgmae{
+    align-content: center;
+    text-align: center;
+}
+
+#resultdiv{
+    align-content: center;
+    text-align: center;
+}
+
+#imagediv{
+    align-content: center;
+    text-align: center;
 }
